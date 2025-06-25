@@ -1,2 +1,0 @@
-# SohamPanchal
-Portfolio
