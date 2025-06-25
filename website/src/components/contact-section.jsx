@@ -62,9 +62,9 @@ export default function ContactSection() {
               <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
               <div className="flex gap-4">
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Twitter, href: "#", label: "Twitter" },
+                  { icon: Github, href: "https://github.com/001AM", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/soham-panchal-430956255/", label: "LinkedIn" },
+                  { icon: Twitter, href: "https://x.com/Soham0001AM", label: "Twitter" },
                 ].map((social, index) => (
                   <Button
                     key={index}

@@ -52,7 +52,7 @@ export default function Navigation() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
-            <Button className="bg-black text-white hover:bg-black/90 font-mono tracking-wider px-6">CONNECT</Button>
+            <Button className="hidden bg-black text-white hover:bg-black/90 font-mono tracking-wider px-6">CONNECT</Button>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -79,7 +79,7 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button className="w-full mt-6 bg-black text-white font-mono tracking-wider">CONNECT</Button>
+            <Button className="hidden w-full mt-6 bg-black text-white font-mono tracking-wider">CONNECT</Button>
           </div>
         )}
       </div>

@@ -79,9 +79,9 @@ export default function Hero() {
           {/* Metrics Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { label: "EXPERIENCE", value: "1.5+ YRS" },
-              { label: "PROJECTS", value: "15+" },
-              { label: "COMMITS", value: "1.2K+" },
+              { label: "EXPERIENCE", value: "1.6+ YRS" },
+              { label: "PROJECTS", value: "10+" },
+              { label: "COMMITS", value: "100+" },
               { label: "PROBLEMS", value: "100+" },
             ].map((metric, index) => (
               <div key={index} className="border border-black/10 p-6 bg-white text-center">
@@ -93,19 +93,25 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="/#projects"> 
             <Button
               size="lg"
               className="bg-black text-white hover:bg-black/90 font-mono tracking-wider px-12 py-4 text-lg"
             >
+              
               VIEW WORK
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-black text-black hover:bg-black hover:text-white font-mono tracking-wider px-12 py-4 text-lg"
-            >
-              DOWNLOAD CV
-            </Button>
+            </a>
+            <a href="/cv.pdf" download="Soham_Panchal_CV.pdf">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-black text-black hover:bg-black hover:text-white font-mono tracking-wider px-12 py-4 text-lg"
+              >
+                DOWNLOAD CV
+              </Button>
+            </a>
+            
           </div>
         </div>
 

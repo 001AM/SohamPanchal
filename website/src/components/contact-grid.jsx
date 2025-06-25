@@ -33,13 +33,6 @@ export default function ContactGrid() {
                     href: "mailto:sohampanchal1469@gmail.com",
                     description: "Best for project inquiries",
                   },
-                  {
-                    icon: Phone,
-                    label: "PHONE",
-                    value: "+91-9511671955",
-                    href: "tel:+919511671955",
-                    description: "Available 9 AM - 6 PM IST",
-                  },
                 ].map((contact, index) => (
                   <div
                     key={index}
@@ -97,18 +90,20 @@ export default function ContactGrid() {
               <h3 className="font-mono text-sm tracking-wider text-white/60 mb-6">SOCIAL NETWORKS</h3>
               <div className="grid grid-cols-3 gap-4">
                 {[
-                  { icon: Github, label: "GITHUB", username: "soham-panchal", followers: "150+" },
-                  { icon: Linkedin, label: "LINKEDIN", username: "soham-panchal-430956255", followers: "500+" },
-                  { icon: Twitter, label: "TWITTER", username: "@sohampanchal", followers: "320+" },
+                  { icon: Github, href: "https://github.com/001AM", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/soham-panchal-430956255/", label: "LinkedIn" },
+                  { icon: Twitter, href: "https://x.com/Soham0001AM", label: "Twitter" },
                 ].map((social, index) => (
-                  <div
-                    key={index}
-                    className="border border-white/20 p-4 bg-black text-center hover:border-white/40 transition-colors duration-300 cursor-pointer"
-                  >
-                    <social.icon size={24} className="mx-auto mb-3" />
-                    <div className="font-mono text-xs tracking-wider text-white/60 mb-1">{social.label}</div>
-                    <div className="font-mono text-xs text-white/40">{social.followers}</div>
-                  </div>
+                  <a href ={social.href}>
+                    <div
+                      key={index}
+                      className="border border-white/20 p-4 bg-black text-center hover:border-white/40 transition-colors duration-300 cursor-pointer"
+                    >
+                      <social.icon size={24} className="mx-auto mb-3" />
+                      <div className="font-mono text-xs tracking-wider text-white/60 mb-1">{social.label}</div>
+                      {/* <div className="font-mono text-xs text-white/40">{social.followers}</div> */}
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -123,20 +118,15 @@ export default function ContactGrid() {
                   <MessageCircle size={16} className="mr-3" />
                   SCHEDULE CALL
                 </Button>
+                <a href="/cv.pdf" download className="block">
+                  <Button
+                    className="w-full bg-white text-black hover:bg-white/90 font-mono tracking-wider py-4 text-sm"
+                  >
+                    <Download size={16} className="mr-3" />
+                    DOWNLOAD RESUME
+                  </Button>
+                </a>
 
-                <Button
-                  className="w-full bg-white text-black hover:bg-white/90 font-mono tracking-wider py-4 text-sm"
-                >
-                  <Download size={16} className="mr-3" />
-                  DOWNLOAD RESUME
-                </Button>
-
-                <Button
-                  className="w-full bg-white text-black hover:bg-white/90 font-mono tracking-wider py-4 text-sm"
-                >
-                  <Github size={16} className="mr-3" />
-                  VIEW GITHUB
-                </Button>
 
                 <Button
                   className="w-full bg-white text-black hover:bg-white/90 font-mono tracking-wider py-4 text-sm"
