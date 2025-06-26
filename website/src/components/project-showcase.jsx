@@ -14,7 +14,7 @@ export default function ProjectsShowcase() {
       subtitle: "Enterprise Messaging Solution",
       description:
         "Architected a scalable messaging platform processing 1M+ messages monthly with 99.99% uptime using microservices architecture, Docker Swarm, and advanced load balancing.",
-      image: "/placeholder.svg?height=400&width=600",
+      // image: "/placeholder.svg?height=400&width=600",
       tech: ["Python", "Django", "Docker", "Redis", "PostgreSQL", "Microservices"],
       metrics: [
         { label: "Messages/Month", value: "1M+", icon: TrendingUp },
@@ -36,7 +36,7 @@ export default function ProjectsShowcase() {
       subtitle: "AI Usage Analytics",
       description:
         "Scalable monitoring tool for tracking LLM API usage across services with real-time anomaly detection, usage heatmaps, and cost optimization insights.",
-      image: "/placeholder.svg?height=400&width=600",
+      // image: "/placeholder.svg?height=400&width=600",
       tech: ["Python", "React.js", "FastAPI", "PostgreSQL", "Django"],
       metrics: [
         { label: "Cost Reduction", value: "20%", icon: TrendingUp },
@@ -44,7 +44,7 @@ export default function ProjectsShowcase() {
         { label: "Accuracy", value: "95%", icon: Users },
       ],
       highlights: ["Real-time monitoring", "Anomaly detection", "Usage optimization", "Multi-service support"],
-      github: "#",
+      github: "https://github.com/001AM/LLMStackWatch",
       demo: "#",
       featured: false,
     },
@@ -61,7 +61,7 @@ export default function ProjectsShowcase() {
         { label: "Users", value: "500+", icon: Users },
       ],
       highlights: ["Smart profile matching", "Career insights", "Skill gap analysis", "Interview preparation"],
-      github: "#",
+      github: "https://github.com/001AM/LLMStackWatch",
       demo: "#",
       featured: false,
     },

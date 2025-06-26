@@ -161,7 +161,7 @@ export default function ContactGrid() {
         </div>
 
         {/* Call to Action Banner */}
-        <div className="border border-white/20 p-12 bg-black text-center">
+        <div className="border hidden border-white/20 p-12 bg-black text-center">
           <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-4">READY TO START YOUR PROJECT?</h3>
           <p className="text-white/60 mb-8 max-w-2xl mx-auto">
             Whether you need a full-stack developer for your startup, want to discuss a freelance project, or explore

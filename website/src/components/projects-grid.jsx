@@ -114,13 +114,13 @@ export default function ProjectsGrid() {
 
                 {/* Actions */}
                 <div className="flex gap-4">
-                  <Button className="bg-white text-black hover:bg-white/90 font-mono tracking-wider">
+                  <Button className="hidden bg-white text-black hover:bg-white/90 font-mono tracking-wider">
                     <ExternalLink size={16} className="mr-2" />
                     VIEW LIVE
                   </Button>
                   <Button
                     variant="outline"
-                    className="border-white/20 text-black hover:bg-white hover:text-black font-mono tracking-wider"
+                    className="hidden border-white/20 text-black hover:bg-white hover:text-black font-mono tracking-wider"
                   >
                     <Github size={16} className="mr-2" />
                     SOURCE
@@ -132,7 +132,7 @@ export default function ProjectsGrid() {
                 <img
                   src={projects[0].image || "/placeholder.svg"}
                   alt={projects[0].title}
-                  className="w-full h-full object-cover"
+                  className="hidden w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
@@ -151,7 +151,7 @@ export default function ProjectsGrid() {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="hidden w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute top-4 left-4">
@@ -189,7 +189,7 @@ export default function ProjectsGrid() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-2">
+                <div className="hidden gap-2">
                   <Button
                     size="sm"
                     variant="outline"

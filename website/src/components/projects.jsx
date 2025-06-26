@@ -21,7 +21,7 @@ export default function Projects() {
       tech: ["Python", "React.js", "FastAPI", "PostgreSQL", "Django"],
       metrics: ["20% cost reduction", "Real-time monitoring", "Multi-service support"],
       image: "/placeholder.svg?height=300&width=500",
-      github: "#",
+      github: "https://github.com/001AM/LLMStackWatch",
       demo: "#",
     },
     {
@@ -41,7 +41,7 @@ export default function Projects() {
       tech: ["Python", "Telegram API", "Redis", "NLP"],
       metrics: ["100+ active users", "30+ keywords", "Real-time analytics"],
       image: "/placeholder.svg?height=300&width=500",
-      github: "#",
+      github: "https://github.com/001AM/MemeBot",
       demo: "#",
     },
   ]
@@ -70,7 +70,7 @@ export default function Projects() {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="hidden w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
               </div>
