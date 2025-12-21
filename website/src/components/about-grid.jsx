@@ -4,19 +4,19 @@ export default function AboutGrid() {
   const skills = [
     {
       category: "LANGUAGES",
-      items: ["Python", "JavaScript", "SQL", "HTML/CSS"],
+      items: ["Python","C++","JavaScript", "SQL", "HTML/CSS"],
       icon: Code,
       color: "blue",
     },
     {
       category: "FRAMEWORKS",
-      items: ["Django", "React.js", "Next.js", "FastAPI"],
+      items: ["Django", "React.js", "Next.js", "FastAPI", "Flask"],
       icon: Database,
       color: "red",
     },
     {
       category: "DATABASES",
-      items: ["PostgreSQL", "MySQL", "Redis", "MongoDB"],
+      items: ["PostgreSQL", "MySQL", "Redis", "MongoDB","SQLite"],
       icon: Database,
       color: "blue",
     },
@@ -103,7 +103,31 @@ export default function AboutGrid() {
         <div>
           <h3 className="text-2xl font-black mb-8 tracking-tight">EXPERIENCE</h3>
           <div className="space-y-8">
-            {/* Full Time Experience */}
+            
+            <div className="border border-black/10 p-8 bg-white">
+              <div className="grid md:grid-cols-4 gap-6">
+                <div>
+                  <div className="font-mono text-xs tracking-wider text-black/60 mb-2">PERIOD</div>
+                  <div className="font-mono text-sm">AUG 2025 - PRESENT</div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs tracking-wider text-black/60 mb-2">ROLE</div>
+                  <div className="font-mono text-sm">FULL STACK DEVELOPER</div>
+                </div>
+                <div className="md:col-span-2">
+                  <div className="font-mono text-xs tracking-wider text-black/60 mb-2">COMPANY</div>
+                  <div className="font-mono text-sm">QODE ADVISORS LLP</div>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t border-black/10">
+                <p className="text-black/80 leading-relaxed">
+                  Responsible for server deployments, infrastructure management, and development of both client-facing and internal platforms.
+                  Build scalable internal tools for data collection, cleaning, and analytics, and develop robust back-testing systems for financial use cases.
+                  Architect and maintain high-availability systems using containerized microservices, ensuring performance, reliability, and operational efficiency across products.
+                </p>
+              </div>
+            </div>
+
             <div className="border border-black/10 p-8 bg-white">
               <div className="grid md:grid-cols-4 gap-6">
                 <div>

@@ -79,7 +79,7 @@ export default function Hero() {
           {/* Metrics Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { label: "EXPERIENCE", value: "1.6+ YRS" },
+              { label: "EXPERIENCE", value: "2.1+ YRS" },
               { label: "PROJECTS", value: "10+" },
               { label: "COMMITS", value: "100+" },
               { label: "PROBLEMS", value: "100+" },
