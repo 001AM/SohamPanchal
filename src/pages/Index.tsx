@@ -52,16 +52,16 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Photo Grid — placeholder for user images */}
+      {/* Photo Grid */}
       <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {[
-            { alt: "Trekking in the mountains", aspect: "aspect-[4/5]" },
-            { alt: "City street photography", aspect: "aspect-square" },
-            { alt: "Local food exploration", aspect: "aspect-[4/5]" },
-            { alt: "Engineering workspace", aspect: "aspect-square md:col-span-1" },
-            { alt: "Mountain summit view", aspect: "aspect-[4/5] hidden md:block" },
-            { alt: "Street food close-up", aspect: "aspect-square hidden md:block" },
+            { src: "/images/IMG_20250615_102804104.jpg", alt: "Trekking in the mountains", aspect: "aspect-[4/5]" },
+            { src: "/images/IMG_20250615_103053915.jpg", alt: "City street photography", aspect: "aspect-square" },
+            { src: "/images/IMG_20250615_105538363_HDR.jpg", alt: "Local food exploration", aspect: "aspect-[4/5]" },
+            { src: "/images/IMG-20220718-WA0020.jpg", alt: "Engineering workspace", aspect: "aspect-square md:col-span-1" },
+            { src: "/images/IMG-20230218-WA0035.jpg", alt: "Mountain summit view", aspect: "aspect-[4/5] hidden md:block" },
+            { src: "/images/IMG-20230218-WA0056.jpg", alt: "Street food close-up", aspect: "aspect-square hidden md:block" },
           ].map((img, i) => (
             <motion.div
               key={i}
@@ -71,15 +71,10 @@ const Index = () => {
               transition={{ delay: i * 0.08, duration: 0.6 }}
               className={`${img.aspect} rounded-lg bg-card overflow-hidden`}
             >
-              <div className="w-full h-full bg-gradient-to-br from-accent to-card flex items-center justify-center">
-                <span className="text-xs text-muted-foreground/60 px-4 text-center">{img.alt}</span>
-              </div>
+              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
             </motion.div>
           ))}
         </div>
-        <p className="mt-4 text-xs text-muted-foreground/50 text-center">
-          ↑ Replace these with your own photos
-        </p>
       </section>
 
       {/* Divider */}
@@ -141,16 +136,19 @@ const Index = () => {
               title: "Trekking",
               desc: "Sahyadri ranges, Western Ghats, and beyond. There's clarity in climbing that no IDE can offer.",
               link: "/photography",
+              image: "/images/IMG-20230218-WA0035.jpg",
             },
             {
               title: "Photography",
               desc: "Capturing the raw textures of Mumbai's streets, mountain trails, and everything in between.",
               link: "/photography",
+              image: "/images/IMG_20250615_103053915.jpg",
             },
             {
               title: "Food & City",
               desc: "From hole-in-the-wall street food to hidden cafés — mapping Mumbai one bite at a time.",
               link: "/explore",
+              image: "/images/IMG-20230218-WA0056.jpg",
             },
           ].map((item, i) => (
             <motion.div
@@ -162,9 +160,7 @@ const Index = () => {
             >
               <Link to={item.link} className="group block">
                 <div className="aspect-[4/3] rounded-lg bg-card mb-4 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-accent to-card flex items-center justify-center">
-                    <span className="text-xs text-muted-foreground/50">Your {item.title.toLowerCase()} photo</span>
-                  </div>
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                   {item.title}

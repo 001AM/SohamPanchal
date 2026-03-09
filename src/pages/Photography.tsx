@@ -7,11 +7,15 @@ const galleries = [
   { title: "Portraits & People", count: 6, desc: "Faces and stories from the trail and the street." },
 ];
 
-const photos = Array.from({ length: 9 }, (_, i) => ({
-  id: i,
-  alt: ["Mountain trail sunrise", "Mumbai street corner", "Trek campsite", "City skyline", "Forest path", "Street vendor", "Summit view", "Old architecture", "Coastal trail"][i],
-  aspect: i % 3 === 0 ? "aspect-[3/4]" : i % 3 === 1 ? "aspect-square" : "aspect-[4/5]",
-}));
+const photos = [
+  { id: 0, src: "/images/IMG_20250615_102804104.jpg", alt: "Mountain trail sunrise", aspect: "aspect-[3/4]" },
+  { id: 1, src: "/images/IMG_20250615_103053915.jpg", alt: "Mumbai street corner", aspect: "aspect-square" },
+  { id: 2, src: "/images/IMG_20250615_105538363_HDR.jpg", alt: "Trek campsite", aspect: "aspect-[4/5]" },
+  { id: 3, src: "/images/IMG-20220718-WA0020.jpg", alt: "City skyline", aspect: "aspect-[3/4]" },
+  { id: 4, src: "/images/IMG-20230218-WA0035.jpg", alt: "Summit view", aspect: "aspect-square" },
+  { id: 5, src: "/images/IMG-20230218-WA0056.jpg", alt: "Street vendor", aspect: "aspect-[4/5]" },
+  { id: 6, src: "/images/soham.jpeg", alt: "Portrait", aspect: "aspect-[3/4]" },
+];
 
 const Photography = () => {
   return (
@@ -61,15 +65,10 @@ const Photography = () => {
               transition={{ delay: i * 0.05 }}
               className={`${photo.aspect} rounded-lg bg-card overflow-hidden break-inside-avoid`}
             >
-              <div className="w-full h-full bg-gradient-to-br from-accent to-card flex items-center justify-center">
-                <span className="text-xs text-muted-foreground/40 px-4 text-center">{photo.alt}</span>
-              </div>
+              <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
             </motion.div>
           ))}
         </div>
-        <p className="mt-6 text-xs text-muted-foreground/50 text-center">
-          Replace placeholders with your actual photographs
-        </p>
       </section>
     </PageLayout>
   );

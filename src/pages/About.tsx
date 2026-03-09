@@ -23,16 +23,13 @@ const About = () => {
           </h1>
         </motion.div>
 
-        {/* Portrait placeholder */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
           className="mt-12 aspect-[3/2] w-full rounded-lg bg-card overflow-hidden"
         >
-          <div className="w-full h-full bg-gradient-to-br from-accent to-card flex items-center justify-center">
           <img src="/images/soham.jpeg" alt="Soham Panchal" className="w-full h-full object-cover" />
-          </div>
         </motion.div>
 
         <motion.div
