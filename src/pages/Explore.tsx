@@ -25,9 +25,8 @@ const treks = [
 ];
 
 const cityNotes = [
-  { name: "Mohammad Ali Road", type: "Food", area: "South Mumbai", note: "Dense, energetic streets where food and community shape the evening rhythm." },
+  { name: "Mama Kane", type: "Food", area: "Dadar", note: "My go-to place for misal pav. You can find me here at least once a month when I visit Siddhivinayak." },
   { name: "Colaba", type: "Wander", area: "South Mumbai", note: "Old facades, cafés, sea air, visitors, and residents sharing the same few streets." },
-  { name: "Prithvi Café", type: "Culture", area: "Juhu", note: "A small corner where theatre, conversation, coffee, and the city’s creative life overlap." },
   { name: "Carter Road", type: "Walk", area: "Bandra", note: "A long coastal pause for sunsets, conversations, movement, and watching the city exhale." },
   { name: "Sassoon Docks", type: "Observe", area: "Colaba", note: "A working waterfront where the city feels raw, immediate, and completely awake." },
   { name: "Mumbai in the rain", type: "Season", area: "Across the city", note: "Reflections, stalled traffic, wet platforms, sudden green, and a different quality of light." },
