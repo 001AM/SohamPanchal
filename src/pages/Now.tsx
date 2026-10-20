@@ -15,7 +15,7 @@ const Now = () => {
             What I'm up to<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-sm text-muted-foreground">
-            Last updated March 2026 — Mumbai, India
+            Last updated March 2026 - Mumbai, India
           </p>
         </motion.div>
 
@@ -25,9 +25,9 @@ const Now = () => {
             <h2 className="font-display text-xl font-semibold text-foreground mb-4">Currently building</h2>
             <div className="space-y-3">
               {[
-                "AI infrastructure tools — LLM monitoring and observability platforms",
-                "Financial data systems — market data pipelines and backtesting engines",
-                "Developer tooling — CLI tools and SDK abstractions",
+                "AI infrastructure tools - LLM monitoring and observability platforms",
+                "Financial data systems - market data pipelines and backtesting engines",
+                "Developer tooling - CLI tools and SDK abstractions",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 rounded-lg border border-border bg-card/50 p-4">
                   <span className="mt-0.5 text-primary text-sm">→</span>

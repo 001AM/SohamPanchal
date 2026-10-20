@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About", path: "/about" },
-  { label: "Projects", path: "/projects" },
+  { label: "Work", path: "/projects" },
+  { label: "Writing", path: "/writing" },
   { label: "Photography", path: "/photography" },
   { label: "Explore", path: "/explore" },
-  { label: "Writing", path: "/writing" },
   { label: "Now", path: "/now" },
   { label: "Contact", path: "/contact" },
 ];
@@ -20,8 +20,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link to="/" className="font-display text-lg font-semibold tracking-tight text-foreground">
-          Soham<span className="text-primary">.</span>
+        <Link to="/" className="flex items-baseline gap-2 text-foreground">
+          <span className="font-display text-lg font-semibold tracking-tight">Soham<span className="text-primary">.</span></span>
+          <span className="hidden text-[10px] uppercase tracking-[0.18em] text-muted-foreground lg:inline">Polymath in progress</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

@@ -8,14 +8,12 @@ const spots = [
   { name: "Bademiya", type: "Street Food", area: "Colaba", note: "Late-night rolls that define Mumbai street food culture." },
   { name: "Prithvi Café", type: "Café", area: "Juhu", note: "Irish coffee and theatre vibes tucked away in Juhu." },
   { name: "Carter Road Promenade", type: "Walk", area: "Bandra", note: "Sunset walks with the sea, street performers, and cutting chai." },
-  { name: "Sassoon Docks", type: "Walk", area: "Colaba", note: "Chaotic, fragrant, raw — Mumbai's oldest fishing dock at sunrise." },
+  { name: "Sassoon Docks", type: "Walk", area: "Colaba", note: "Chaotic, fragrant, raw - Mumbai's oldest fishing dock at sunrise." },
 ];
 
 const treks = [
-  { name: "Kalsubai", elevation: "1,646m", difficulty: "Moderate", note: "Highest peak in Maharashtra. Pre-dawn start for sunrise." },
-  { name: "Harishchandragad", elevation: "1,424m", difficulty: "Moderate-Hard", note: "The Konkan Kada cliff face is genuinely breathtaking." },
-  { name: "Rajmachi", elevation: "917m", difficulty: "Easy-Moderate", note: "Monsoon firefly trails and twin fort ruins." },
-  { name: "Lohagad", elevation: "1,033m", difficulty: "Easy", note: "Perfect first trek. Pune day-trip with incredible views." },
+  { name: "Bhandardara", region: "Sahyadri", difficulty: "Easy-Moderate", note: "Lakeside trails, monsoon-green hills, waterfalls, and quiet roads through the Western Ghats." },
+  { name: "Triund Trek", region: "Dhauladhar", difficulty: "Moderate", note: "A memorable climb above Dharamshala with sweeping views of the Dhauladhar range." },
 ];
 
 const Explore = () => {
@@ -32,7 +30,7 @@ const Explore = () => {
             Off the screen<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-base text-muted-foreground max-w-lg">
-            A running log of favourite food spots, city walks, and treks around Maharashtra.
+            A running log of favourite food spots, city walks, and treks across Maharashtra and beyond.
           </p>
         </motion.div>
 
@@ -85,7 +83,7 @@ const Explore = () => {
                     <p className="mt-1 text-sm text-muted-foreground">{trek.note}</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-sm font-medium text-foreground">{trek.elevation}</p>
+                    <p className="text-sm font-medium text-foreground">{trek.region}</p>
                     <p className="text-xs text-muted-foreground">{trek.difficulty}</p>
                   </div>
                 </div>

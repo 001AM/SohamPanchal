@@ -41,7 +41,7 @@ const TerminalBlock = () => {
         <div className="h-2.5 w-2.5 rounded-full bg-neon-red/80" />
         <div className="h-2.5 w-2.5 rounded-full bg-neon-amber/80" />
         <div className="h-2.5 w-2.5 rounded-full bg-neon-green/80" />
-        <span className="ml-2 font-mono text-[10px] text-muted-foreground">systems-lab — bash</span>
+        <span className="ml-2 font-mono text-[10px] text-muted-foreground">systems-lab - bash</span>
       </div>
       <div className="terminal-bg p-4 font-mono text-xs leading-6 min-h-[240px]">
         {lines.slice(0, visibleLines).map((line, i) => (

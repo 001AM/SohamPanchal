@@ -7,7 +7,7 @@ import SectionLabel from "@/components/shared/SectionLabel";
 const systems = [
   {
     title: "Designing an LLM Observability Platform",
-    summary: "How to build a production monitoring system for LLM applications — tracking prompts, tokens, latency, cost, and quality across providers.",
+    summary: "How to build a production monitoring system for LLM applications - tracking prompts, tokens, latency, cost, and quality across providers.",
     diagram: ["LLM App", "SDK", "Event Queue", "Processor", "PostgreSQL", "Dashboard"],
     sections: [
       { heading: "The Problem", content: "LLM applications in production are black boxes. Teams can't answer: Which prompts are failing? What's our token spend? How does latency vary across providers?" },

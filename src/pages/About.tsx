@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/layout/PageLayout";
 
 const values = [
-  "Ship production systems, not demos.",
-  "Observability is a feature, not an afterthought.",
-  "Good infrastructure makes everything else possible.",
-  "The best code is the code you understand deeply.",
+  "Follow questions across disciplines.",
+  "Build to understand, not only to impress.",
+  "Pay attention—the details are usually the story.",
+  "Choose depth, then connect what you learn.",
 ];
 
 const About = () => {
@@ -17,7 +17,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-sm text-muted-foreground mb-4">About</p>
+          <p className="text-sm text-muted-foreground mb-4">About · The whole person</p>
           <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
             The full picture<span className="text-primary">.</span>
           </h1>
@@ -39,18 +39,19 @@ const About = () => {
           className="mt-12 space-y-6 text-base leading-relaxed text-muted-foreground"
         >
           <p>
-            I'm Soham Panchal — a full stack engineer from Mumbai, India with a BE in Computer Engineering 
-            from the University of Mumbai. I build production-grade AI infrastructure, financial data systems, 
-            and developer tools.
+            I'm Soham Panchal—a polymath in progress from Mumbai. Engineering is one of my deepest
+            practices, but it is not the border of who I am. I also write, photograph, trek, study markets,
+            and explore the food and street culture of the city I call home.
           </p>
           <p>
-            When I'm not writing code, you'll find me trekking through the Sahyadri ranges, photographing 
-            Mumbai's chaotic beauty, or hunting down the city's best street food. I believe the best engineers 
-            are the ones who stay curious about the world beyond their screens.
+            I hold a BE in Computer Engineering from the University of Mumbai and build production-grade AI
+            infrastructure, financial data systems, and developer tools. The same instinct that pulls me into
+            a system also pulls me toward a mountain trail or a crowded Mumbai street: I want to understand
+            what is happening beneath the surface.
           </p>
           <p>
-            My work sits at the intersection of AI systems, financial engineering, and developer tooling. 
-            I care about building things that are reliable, observable, and genuinely useful.
+            This site is where those threads meet. It is part portfolio, part notebook, part photo archive,
+            and part field guide—a record of what I am building, noticing, and learning in public.
           </p>
         </motion.div>
 
@@ -61,9 +62,10 @@ const About = () => {
           
           <div className="space-y-10">
             {[
-              { period: "Early Days", title: "Curiosity", text: "Fascinated by how systems work under the hood. Started with simple scripts, quickly moved to understanding distributed systems, databases, and infrastructure." },
-              { period: "University", title: "Builder Phase", text: "Built real production systems — LLM monitoring, trading pipelines, AI job matching, and large-scale scraping. Every project solved real engineering problems." },
-              { period: "Present", title: "Systems Thinking", text: "Shifted from features to complete system design. Obsessed with observability, pipeline architecture, and building infrastructure developers can rely on." },
+              { period: "Early days", title: "Taking things apart", text: "Curiosity began with systems: how software works, why things break, and what becomes possible when the pieces are rearranged." },
+              { period: "University", title: "Learning by building", text: "A computer engineering degree became a launchpad for production software, AI systems, trading tools, and technical writing." },
+              { period: "Beyond code", title: "Looking outward", text: "Trekking, photography, and exploring Mumbai sharpened another kind of attention: to place, light, people, food, and lived experience." },
+              { period: "Now", title: "Connecting the threads", text: "Building a practice where engineering, writing, observation, and exploration make each other richer." },
             ].map((item, i) => (
               <motion.div
                 key={item.title}

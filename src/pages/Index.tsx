@@ -1,178 +1,192 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen, Camera, Code2, Compass } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import ActivityDashboard from "@/components/shared/ActivityDashboard";
+import { posts } from "@/data/posts";
 
-const featuredWork = [
-  { title: "LLM Monitoring Platform", tag: "AI Infrastructure", href: "/projects" },
-  { title: "AI Job Matcher", tag: "Machine Learning", href: "/projects" },
-  { title: "Stock Backtesting Engine", tag: "Financial Systems", href: "/projects" },
+const pursuits = [
+  {
+    number: "01",
+    title: "Build",
+    description: "Production software, AI infrastructure, financial systems, and tools that make complex work feel simple.",
+    href: "/projects",
+    cta: "See selected work",
+    icon: Code2,
+  },
+  {
+    number: "02",
+    title: "Write",
+    description: "Notes on technology, learning, systems, and the questions that keep unfolding beyond the screen.",
+    href: "/writing",
+    cta: "Read the notes",
+    icon: BookOpen,
+  },
+  {
+    number: "03",
+    title: "Observe",
+    description: "Street frames, mountain light, people, and the small details that make a place feel alive.",
+    href: "/photography",
+    cta: "Open the gallery",
+    icon: Camera,
+  },
+  {
+    number: "04",
+    title: "Explore",
+    description: "Treks, city walks, local food, and a growing field guide to Mumbai and Maharashtra.",
+    href: "/explore",
+    cta: "Follow the trail",
+    icon: Compass,
+  },
 ];
 
-const Index = () => {
-  return (
-    <PageLayout>
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-24 pb-20 md:pt-36 md:pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <p className="text-sm text-muted-foreground mb-6">Mumbai, India</p>
-          <h1 className="font-display text-5xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-7xl md:text-8xl text-balance">
-            Engineer, explorer,<br />
-            <span className="italic text-primary">storyteller.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            I'm Soham — a full stack engineer who builds AI systems and financial infrastructure
-            by day, and explores mountains, city streets, and local kitchens the rest of the time.
-          </p>
-        </motion.div>
+const featuredImages = [
+  { src: "/images/soham.jpeg", alt: "Soham Panchal", className: "col-span-2 row-span-2" },
+  { src: "/images/trip_012.jpg", alt: "Dhauladhar peaks at dusk", className: "col-span-1" },
+  { src: "/images/mumbai_257.jpg", alt: "Rainy Mumbai station", className: "col-span-1" },
+];
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-10 flex flex-wrap gap-4"
-        >
+const Index = () => (
+  <PageLayout>
+    <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-28 md:grid-cols-[1.08fr_0.92fr] md:items-center md:pb-32 md:pt-40">
+      <div>
+        <p className="mb-7 text-xs font-medium uppercase tracking-[0.22em] text-primary">
+          Mumbai · Polymath in progress
+        </p>
+        <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.4rem]">
+          A life built around <span className="italic text-primary">curiosity.</span>
+        </h1>
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          I’m Soham—an engineer, writer, photographer, and explorer following ideas across software,
+          markets, mountains, city streets, and culture.
+        </p>
+        <div className="mt-10 flex flex-wrap gap-3">
           <Link
             to="/about"
             className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
           >
-            Read my story
-            <ArrowRight className="h-4 w-4" />
+            Meet the whole person <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
-            to="/projects"
+            to="/writing"
             className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            View projects
+            Read my writing
           </Link>
-        </motion.div>
-      </section>
-
-      {/* Photo Grid */}
-      <section className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[
-            { src: "/images/IMG_20250615_102804104.jpg", alt: "Trekking in the mountains", aspect: "aspect-[4/5]" },
-            { src: "/images/IMG_20250615_103053915.jpg", alt: "City street photography", aspect: "aspect-square" },
-            { src: "/images/IMG_20250615_105538363_HDR.jpg", alt: "Local food exploration", aspect: "aspect-[4/5]" },
-            { src: "/images/IMG-20220718-WA0020.jpg", alt: "Engineering workspace", aspect: "aspect-square md:col-span-1" },
-            { src: "/images/IMG-20230218-WA0035.jpg", alt: "Mountain summit view", aspect: "aspect-[4/5] hidden md:block" },
-            { src: "/images/IMG-20230218-WA0056.jpg", alt: "Street food close-up", aspect: "aspect-square hidden md:block" },
-          ].map((img, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
-              className={`${img.aspect} rounded-lg bg-card overflow-hidden`}
-            >
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
-            </motion.div>
-          ))}
         </div>
-      </section>
-
-      {/* Divider */}
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="editorial-divider" />
       </div>
 
-      {/* Featured Work */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-muted-foreground mb-2">Selected work</p>
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Things I've built
-          </h2>
-        </motion.div>
+      <div className="grid h-[480px] grid-cols-3 grid-rows-2 gap-3 sm:h-[560px]">
+        {featuredImages.map((image) => (
+          <div key={image.src} className={`${image.className} overflow-hidden rounded-lg bg-card`}>
+            <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+          </div>
+        ))}
+      </div>
+    </section>
 
-        <div className="mt-12 flex flex-col">
-          {featuredWork.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Link
-                to={project.href}
-                className="group flex items-center justify-between border-b border-border py-6 transition-colors hover:bg-accent/30 -mx-4 px-4 rounded-md"
+    <section className="border-y border-border bg-card/35">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+          <div>
+            <p className="mb-3 text-sm text-muted-foreground">The practice</p>
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Many threads.<br />One curious mind.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            I don’t see engineering, writing, photography, and exploration as separate identities.
+            They are different ways of doing the same thing: paying close attention, finding patterns,
+            and making something useful from what I learn.
+          </p>
+        </div>
+
+        <div className="mt-16 grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2">
+          {pursuits.map((pursuit, index) => {
+            const Icon = pursuit.icon;
+            return (
+              <motion.div
+                key={pursuit.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
               >
-                <div>
-                  <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{project.tag}</p>
-                </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-1 transition-all" />
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  to={pursuit.href}
+                  className="group flex min-h-64 flex-col bg-background p-7 transition-colors hover:bg-accent/60 sm:p-9"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs text-muted-foreground">{pursuit.number}</span>
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mt-10 font-display text-3xl font-semibold text-foreground">{pursuit.title}</h3>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">{pursuit.description}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-8 text-sm text-foreground">
+                    {pursuit.cta}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
+      </div>
+    </section>
 
-        <Link
-          to="/projects"
-          className="mt-8 inline-flex items-center gap-2 text-sm text-primary hover:underline"
-        >
-          View all projects <ArrowRight className="h-3.5 w-3.5" />
+    <section className="mx-auto grid max-w-6xl gap-14 px-6 py-24 md:grid-cols-[0.72fr_1.28fr] md:py-32">
+      <div>
+        <p className="mb-3 text-sm text-muted-foreground">From the notebook</p>
+        <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Ideas worth<br />thinking through.
+        </h2>
+        <Link to="/writing" className="mt-7 inline-flex items-center gap-2 text-sm text-primary hover:underline">
+          Browse all writing <ArrowRight className="h-3.5 w-3.5" />
         </Link>
-      </section>
+      </div>
 
-      {/* Interests */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Trekking",
-              desc: "Sahyadri ranges, Western Ghats, and beyond. There's clarity in climbing that no IDE can offer.",
-              link: "/photography",
-              image: "/images/IMG-20230218-WA0035.jpg",
-            },
-            {
-              title: "Photography",
-              desc: "Capturing the raw textures of Mumbai's streets, mountain trails, and everything in between.",
-              link: "/photography",
-              image: "/images/IMG_20250615_103053915.jpg",
-            },
-            {
-              title: "Food & City",
-              desc: "From hole-in-the-wall street food to hidden cafés — mapping Mumbai one bite at a time.",
-              link: "/explore",
-              image: "/images/IMG-20230218-WA0056.jpg",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+      <div className="border-t border-border">
+        {posts.slice(0, 3).map((post, index) => (
+          <motion.div
+            key={post.slug}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08 }}
+          >
+            <Link
+              to={`/writing/${post.slug}`}
+              className="group grid gap-3 border-b border-border py-7 transition-colors hover:bg-accent/30 sm:grid-cols-[1fr_auto] sm:px-4"
             >
-              <Link to={item.link} className="group block">
-                <div className="aspect-[4/3] rounded-lg bg-card mb-4 overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </Link>
-            </motion.div>
-          ))}
+              <div>
+                <p className="text-xs text-primary">{post.category} · {post.date}</p>
+                <h3 className="mt-2 text-lg font-medium text-foreground transition-colors group-hover:text-primary">{post.title}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
+              </div>
+              <ArrowRight className="mt-1 hidden h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 sm:block" />
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+
+    <section id="elsewhere" className="border-t border-border">
+      <div className="mx-auto max-w-6xl px-6 py-24">
+        <div className="max-w-2xl">
+          <p className="mb-3 text-sm text-muted-foreground">Elsewhere on the internet</p>
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            Follow the work as it happens.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Essays, code, algorithms, experiments, and shorter observations—automatically refreshed from the places where I publish.
+          </p>
         </div>
-      </section>
-    </PageLayout>
-  );
-};
+        <div className="mt-12">
+          <ActivityDashboard />
+        </div>
+      </div>
+    </section>
+  </PageLayout>
+);
 
 export default Index;

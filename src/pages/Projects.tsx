@@ -54,7 +54,7 @@ const Projects = () => {
             Selected projects<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-base text-muted-foreground">
-            Systems I've designed and built — from data pipelines to AI infrastructure.
+            Systems I've designed and built - from data pipelines to AI infrastructure.
           </p>
         </motion.div>
 

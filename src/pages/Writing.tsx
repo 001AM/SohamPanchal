@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 import { posts } from "@/data/posts";
+import { socialLinks } from "@/data/socials";
 
 const categories = ["All", ...Array.from(new Set(posts.map((p) => p.category)))];
 
@@ -17,10 +18,10 @@ const Writing = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <p className="text-sm text-muted-foreground mb-4">Writing</p>
           <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Engineering notes<span className="text-primary">.</span>
+            Notes across disciplines<span className="text-primary">.</span>
           </h1>
           <p className="mt-4 text-base text-muted-foreground">
-            Thinking out loud about systems, AI, and infrastructure.
+            Essays and working notes on software, learning, markets, places, and the ideas connecting them.
           </p>
         </motion.div>
 
@@ -70,6 +71,37 @@ const Writing = () => {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-20 border-t border-border pt-10">
+          <p className="text-sm text-muted-foreground">Also published elsewhere</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            {socialLinks.filter((link) => link.kind === "writing").map((link) =>
+              link.url ? (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-lg border border-border bg-card/40 p-4 transition-colors hover:bg-accent"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-foreground">{link.label}</span>
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                  </div>
+                  <p className="mt-1 text-xs text-primary">{link.handle}</p>
+                </a>
+              ) : (
+                <div key={link.label} className="rounded-lg border border-dashed border-border bg-card/20 p-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-medium text-foreground">{link.label}</span>
+                    <span className="text-[10px] text-muted-foreground">URL needed</span>
+                  </div>
+                  <p className="mt-1 text-xs text-primary">{link.handle}</p>
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </section>
     </PageLayout>

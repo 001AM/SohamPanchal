@@ -38,7 +38,7 @@ try {
       await page.evaluate((t, d) => {
         document.title = t;
         document.querySelector('meta[name="description"]').content = d;
-      }, `${meta.h1} — Soham Panchal`, meta.p);
+      }, `${meta.h1} - Soham Panchal`, meta.p);
     }
     titles.push([route, await page.title(), meta.p]);
     let html = await page.content();
@@ -64,4 +64,4 @@ if (site) {
 }
 
 // llms.txt: plain-text index for LLM agents (llmstxt.org format)
-fs.writeFileSync(path.join(dist, "llms.txt"), `# Soham Panchal\n\n> Full stack engineer from Mumbai: AI systems, financial infrastructure, developer tools.\n\n## Pages\n\n${titles.map(([r, t, d]) => `- [${t}](${site}${r}): ${d}`).join("\n")}\n`);
+fs.writeFileSync(path.join(dist, "llms.txt"), `# Soham Panchal\n\n> Polymath in progress from Mumbai: engineer, writer, photographer, and explorer working across software, markets, places, and culture.\n\n## Pages\n\n${titles.map(([r, t, d]) => `- [${t}](${site}${r}): ${d}`).join("\n")}\n`);

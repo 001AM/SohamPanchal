@@ -1,121 +1,146 @@
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight, RefreshCw } from "lucide-react";
+import { socialLinks } from "@/data/socials";
 
-const activities = [
-  {
-    platform: "LeetCode",
-    handle: "@001AM",
-    stat: "500+",
-    statLabel: "Problems",
-    url: "https://leetcode.com/u/001AM/",
-    color: "neon-amber",
-    metrics: [
-      { label: "Solved", value: "500+" },
-      { label: "Streak", value: "Active" },
-      { label: "Rank", value: "Top 15%" },
-    ],
-  },
-  {
-    platform: "LinkedIn",
-    handle: "Soham Panchal",
-    stat: "—",
-    statLabel: "Connections",
-    url: "https://www.linkedin.com/in/soham-panchal-430956255/",
-    color: "neon-cyan",
-    metrics: [
-      { label: "Posts", value: "12" },
-      { label: "Articles", value: "3" },
-      { label: "Network", value: "Growing" },
-    ],
-  },
-  {
-    platform: "Dev.to",
-    handle: "@001am",
-    stat: "—",
-    statLabel: "Followers",
-    url: "https://dev.to/001am",
-    color: "neon-green",
-    metrics: [
-      { label: "Posts", value: "8" },
-      { label: "Reactions", value: "120+" },
-      { label: "Comments", value: "45" },
-    ],
-  },
-  {
-    platform: "Medium",
-    handle: "@sohampanchal",
-    stat: "—",
-    statLabel: "Reads",
-    url: "https://medium.com/@sohampanchal1469",
-    color: "neon-purple",
-    metrics: [
-      { label: "Articles", value: "6" },
-      { label: "Followers", value: "50+" },
-      { label: "Views", value: "2K+" },
-    ],
-  },
-  {
-    platform: "X",
-    handle: "@Soham0001AM",
-    stat: "—",
-    statLabel: "Following",
-    url: "https://x.com/Soham0001AM",
-    color: "neon-red",
-    metrics: [
-      { label: "Posts", value: "200+" },
-      { label: "Likes", value: "500+" },
-      { label: "Topics", value: "Tech" },
-    ],
-  },
-];
+type Metric = { label: string; value: string };
 
-const colorMap: Record<string, string> = {
-  "neon-amber": "hsl(38 100% 55%)",
-  "neon-cyan": "hsl(180 80% 50%)",
-  "neon-green": "hsl(160 100% 45%)",
-  "neon-purple": "hsl(270 80% 60%)",
-  "neon-red": "hsl(0 80% 55%)",
+type SyncedPlatform = {
+  platform: string;
+  handle: string;
+  url: string;
+  note?: string;
+  metrics: Metric[];
 };
 
-const ActivityDashboard = () => (
-  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {activities.map((a, i) => (
-      <motion.a
-        key={a.platform}
-        href={a.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: i * 0.08, duration: 0.5 }}
-        className="group relative rounded-lg border border-border bg-card/80 p-5 transition-all hover:neon-border overflow-hidden"
-      >
-        {/* Top bar accent */}
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: `linear-gradient(90deg, transparent, ${colorMap[a.color]}, transparent)` }}
-        />
+type ActivityResponse = {
+  updatedAt: string;
+  platforms: SyncedPlatform[];
+};
 
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <p className="font-mono text-xs font-semibold text-foreground">{a.platform}</p>
-            <p className="font-mono text-[10px] text-muted-foreground mt-0.5">{a.handle}</p>
-          </div>
-          <ExternalLink className="h-3 w-3 text-muted-foreground/50 group-hover:text-primary transition-colors" />
-        </div>
+const fallbackPlatforms: SyncedPlatform[] = socialLinks.map((social) => ({
+  platform: social.label,
+  handle: social.handle,
+  url: social.url ?? "",
+  note: social.note,
+  metrics: [
+    {
+      label: "Space",
+      value:
+        social.kind === "building"
+          ? "Build"
+          : social.kind === "writing"
+            ? "Write"
+            : social.kind === "thinking"
+              ? "Think"
+              : "Connect",
+    },
+    { label: "Status", value: social.url ? "Linked" : "Pending" },
+  ],
+}));
 
-        <div className="grid grid-cols-3 gap-2">
-          {a.metrics.map((m) => (
-            <div key={m.label} className="text-center">
-              <p className="font-mono text-sm font-bold text-foreground">{m.value}</p>
-              <p className="font-mono text-[8px] uppercase tracking-wider text-muted-foreground">{m.label}</p>
-            </div>
-          ))}
-        </div>
-      </motion.a>
-    ))}
-  </div>
-);
+const ActivityDashboard = () => {
+  const [synced, setSynced] = useState<ActivityResponse | null>(null);
+  const [syncFailed, setSyncFailed] = useState(false);
+  const apiUrl = import.meta.env.VITE_ACTIVITY_API_URL?.replace(/\/$/, "");
+
+  useEffect(() => {
+    if (!apiUrl) return;
+
+    const controller = new AbortController();
+    fetch(`${apiUrl}/activity`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Activity API returned ${response.status}`);
+        return response.json() as Promise<ActivityResponse>;
+      })
+      .then((data) => {
+        if (Array.isArray(data.platforms)) setSynced(data);
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setSyncFailed(true);
+      });
+
+    return () => controller.abort();
+  }, [apiUrl]);
+
+  const platforms = useMemo(() => {
+    if (!synced) return fallbackPlatforms;
+
+    const liveByName = new Map(synced.platforms.map((platform) => [platform.platform, platform]));
+    return fallbackPlatforms.map((fallback) => liveByName.get(fallback.platform) ?? fallback);
+  }, [synced]);
+
+  return (
+    <div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+        <span className="inline-flex items-center gap-2">
+          <span className={`h-1.5 w-1.5 rounded-full ${synced ? "bg-emerald-500" : "bg-primary/60"}`} />
+          {synced ? "Live profile data" : syncFailed ? "Showing saved profile links" : "Connected profiles"}
+        </span>
+        {synced?.updatedAt && (
+          <span className="inline-flex items-center gap-1.5">
+            <RefreshCw className="h-3 w-3" />
+            Synced {new Date(synced.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}
+          </span>
+        )}
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {platforms.map((platform, index) => {
+          const card = (
+            <>
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-medium text-foreground">{platform.platform}</p>
+                  <p className="mt-1 text-xs text-primary">{platform.handle}</p>
+                </div>
+                {platform.url ? (
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+                ) : (
+                  <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] text-muted-foreground">link needed</span>
+                )}
+              </div>
+
+              <p className="mt-5 min-h-10 text-sm leading-relaxed text-muted-foreground">{platform.note}</p>
+
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4">
+                {platform.metrics.slice(0, 3).map((metric) => (
+                  <div key={metric.label}>
+                    <p className="text-sm font-medium text-foreground">{metric.value}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{metric.label}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          );
+
+          return (
+            <motion.div
+              key={platform.platform}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.04 }}
+            >
+              {platform.url ? (
+                <a
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block min-h-52 rounded-lg border border-border bg-card/40 p-5 transition-colors hover:bg-accent/60"
+                >
+                  {card}
+                </a>
+              ) : (
+                <div className="min-h-52 rounded-lg border border-dashed border-border bg-card/20 p-5">{card}</div>
+              )}
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 export default ActivityDashboard;
