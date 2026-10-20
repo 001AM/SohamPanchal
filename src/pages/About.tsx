@@ -4,7 +4,7 @@ import PageLayout from "@/components/layout/PageLayout";
 const values = [
   "Follow questions across disciplines.",
   "Build to understand, not only to impress.",
-  "Pay attention—the details are usually the story.",
+  "Pay attention; the details are usually the story.",
   "Choose depth, then connect what you learn.",
 ];
 
@@ -39,7 +39,7 @@ const About = () => {
           className="mt-12 space-y-6 text-base leading-relaxed text-muted-foreground"
         >
           <p>
-            I'm Soham Panchal—a polymath in progress from Mumbai. Engineering is one of my deepest
+            I'm Soham Panchal, a curious builder from Mumbai. Engineering is one of my deepest
             practices, but it is not the border of who I am. I also write, photograph, trek, study markets,
             and explore the food and street culture of the city I call home.
           </p>
@@ -51,7 +51,7 @@ const About = () => {
           </p>
           <p>
             This site is where those threads meet. It is part portfolio, part notebook, part photo archive,
-            and part field guide—a record of what I am building, noticing, and learning in public.
+            and part field guide: a record of what I am building, noticing, and learning in public.
           </p>
         </motion.div>
 

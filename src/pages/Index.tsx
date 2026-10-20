@@ -51,13 +51,13 @@ const Index = () => (
     <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-28 md:grid-cols-[1.08fr_0.92fr] md:items-center md:pb-32 md:pt-40">
       <div>
         <p className="mb-7 text-xs font-medium uppercase tracking-[0.22em] text-primary">
-          Mumbai · Polymath in progress
+          Mumbai · Building across disciplines
         </p>
         <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-[5.4rem]">
           A life built around <span className="italic text-primary">curiosity.</span>
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          I’m Soham—an engineer, writer, photographer, and explorer following ideas across software,
+          I’m Soham, an engineer, writer, photographer, and explorer following ideas across software,
           markets, mountains, city streets, and culture.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
@@ -178,7 +178,7 @@ const Index = () => (
             Follow the work as it happens.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Essays, code, algorithms, experiments, and shorter observations—automatically refreshed from the places where I publish.
+            Essays, code, algorithms, experiments, and shorter observations, automatically refreshed from the places where I publish.
           </p>
         </div>
         <div className="mt-12">

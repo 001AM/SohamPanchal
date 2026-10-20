@@ -20,9 +20,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link to="/" className="flex items-baseline gap-2 text-foreground">
+        <Link to="/" className="flex items-baseline text-foreground">
           <span className="font-display text-lg font-semibold tracking-tight">Soham<span className="text-primary">.</span></span>
-          <span className="hidden text-[10px] uppercase tracking-[0.18em] text-muted-foreground lg:inline">Polymath in progress</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

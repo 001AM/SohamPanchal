@@ -1,6 +1,6 @@
 # Activity sync backend
 
-A small Cloudflare Worker that keeps the portfolio's public activity cards fresh. It collects public data from GitHub, LeetCode, Chess.com, Dev.to, Medium RSS, npm, and—when configured—a Substack publication RSS feed. The supplied Substack author profile, LinkedIn, and X remain direct links because they do not provide suitable unauthenticated feeds for this use.
+A small Cloudflare Worker that keeps the portfolio's public activity cards fresh. It collects public data from GitHub, LeetCode, Chess.com, Dev.to, Medium RSS, npm, and, when configured, a Substack publication RSS feed. The supplied Substack author profile, LinkedIn, and X remain direct links because they do not provide suitable unauthenticated feeds for this use.
 
 The Worker is request-driven (so there is no sleeping server) and also refreshes its edge cache every six hours with a Cron Trigger.
 

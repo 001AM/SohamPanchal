@@ -1,4 +1,4 @@
-# Soham Panchal — polymath portfolio
+# Soham Panchal | Personal portfolio
 
 The portfolio is a Vite/React site designed to deploy on Vercel. Live public profile data is provided by a separate Cloudflare Worker in [`backend/`](backend/README.md), so the frontend remains static and fast while the activity feed refreshes automatically.
 

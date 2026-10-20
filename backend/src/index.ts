@@ -130,7 +130,7 @@ async function leetcode(): Promise<Platform> {
     note: "Algorithms and problem-solving practice",
     metrics: [
       { label: "Solved", value: compactNumber(solved) },
-      { label: "Rank", value: user.profile?.ranking ? compactNumber(user.profile.ranking) : "—" },
+      { label: "Rank", value: user.profile?.ranking ? compactNumber(user.profile.ranking) : "N/A" },
     ],
   };
 }
@@ -167,7 +167,7 @@ async function rssPlatform(
   if (!response.ok) throw new Error(`${platform} feed returned ${response.status}`);
   const xml = await response.text();
   const items = xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>/gi) ?? [];
-  const latest = items[0] ? xmlValue(items[0], "title") : "—";
+  const latest = items[0] ? xmlValue(items[0], "title") : "N/A";
 
   return {
     platform,
@@ -176,7 +176,7 @@ async function rssPlatform(
     note,
     metrics: [
       { label: "Articles", value: compactNumber(items.length) },
-      { label: "Latest", value: latest === "—" ? latest : "New" },
+      { label: "Latest", value: latest === "N/A" ? latest : "New" },
     ],
   };
 }
@@ -215,9 +215,9 @@ async function chess(): Promise<Platform> {
     url: "https://www.chess.com/member/soham0410",
     note: "Chess games, calculation, and strategic practice",
     metrics: [
-      { label: "Rapid", value: rapid?.last?.rating ? compactNumber(rapid.last.rating) : "—" },
+      { label: "Rapid", value: rapid?.last?.rating ? compactNumber(rapid.last.rating) : "N/A" },
       { label: "Games", value: compactNumber(games) },
-      { label: "Wins", value: rapid?.record ? compactNumber(rapid.record.win) : "—" },
+      { label: "Wins", value: rapid?.record ? compactNumber(rapid.record.win) : "N/A" },
     ],
   };
 }

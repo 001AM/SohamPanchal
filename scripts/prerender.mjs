@@ -64,4 +64,4 @@ if (site) {
 }
 
 // llms.txt: plain-text index for LLM agents (llmstxt.org format)
-fs.writeFileSync(path.join(dist, "llms.txt"), `# Soham Panchal\n\n> Polymath in progress from Mumbai: engineer, writer, photographer, and explorer working across software, markets, places, and culture.\n\n## Pages\n\n${titles.map(([r, t, d]) => `- [${t}](${site}${r}): ${d}`).join("\n")}\n`);
+fs.writeFileSync(path.join(dist, "llms.txt"), `# Soham Panchal\n\n> Engineer, writer, photographer, and explorer from Mumbai working across software, markets, places, and culture.\n\n## Pages\n\n${titles.map(([r, t, d]) => `- [${t}](${site}${r}): ${d}`).join("\n")}\n`);
