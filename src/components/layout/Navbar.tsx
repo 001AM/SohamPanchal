@@ -18,7 +18,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur-md" aria-label="Primary navigation">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="flex items-baseline text-foreground">
           <span className="font-display text-lg font-semibold tracking-tight">Soham<span className="text-primary">.</span></span>
@@ -29,11 +29,12 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm transition-colors ${
-                location.pathname === link.path
+              className={`relative py-1 text-sm transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:bg-primary after:transition-transform ${
+                location.pathname === link.path || (link.path === "/writing" && location.pathname.startsWith("/writing/"))
                   ? "text-foreground font-medium"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100"
               }`}
+              aria-current={location.pathname === link.path ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -42,7 +43,7 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground md:hidden"
+          className="rounded-md p-2 text-foreground transition-colors hover:bg-accent md:hidden"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -64,7 +65,7 @@ const Navbar = () => {
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
                   className={`rounded-md px-3 py-2.5 text-sm transition-colors ${
-                    location.pathname === link.path
+                    location.pathname === link.path || (link.path === "/writing" && location.pathname.startsWith("/writing/"))
                       ? "text-foreground font-medium bg-accent"
                       : "text-muted-foreground hover:text-foreground"
                   }`}

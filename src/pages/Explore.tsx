@@ -1,99 +1,116 @@
-import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPin, Mountain, Route } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
-
-const spots = [
-  { name: "Mohammad Ali Road", type: "Street Food", area: "South Mumbai", note: "Best seekh kebabs and malpua during Ramadan." },
-  { name: "Cafe Mondegar", type: "Café", area: "Colaba", note: "Iconic murals, cold beer, and people watching since 1932." },
-  { name: "Bademiya", type: "Street Food", area: "Colaba", note: "Late-night rolls that define Mumbai street food culture." },
-  { name: "Prithvi Café", type: "Café", area: "Juhu", note: "Irish coffee and theatre vibes tucked away in Juhu." },
-  { name: "Carter Road Promenade", type: "Walk", area: "Bandra", note: "Sunset walks with the sea, street performers, and cutting chai." },
-  { name: "Sassoon Docks", type: "Walk", area: "Colaba", note: "Chaotic, fragrant, raw - Mumbai's oldest fishing dock at sunrise." },
-];
+import PageIntro from "@/components/shared/PageIntro";
+import PageCta from "@/components/shared/PageCta";
 
 const treks = [
-  { name: "Bhandardara", region: "Sahyadri", difficulty: "Easy-Moderate", note: "Lakeside trails, monsoon-green hills, waterfalls, and quiet roads through the Western Ghats." },
-  { name: "Triund Trek", region: "Dhauladhar", difficulty: "Moderate", note: "A memorable climb above Dharamshala with sweeping views of the Dhauladhar range." },
+  {
+    number: "01",
+    name: "Bhandardara",
+    region: "Sahyadri, Maharashtra",
+    pace: "Easy to moderate",
+    image: "/images/mumbai_169.jpg",
+    alt: "A waterfall in the green Sahyadri hills",
+    note: "A landscape of water, monsoon-green hills, waterfalls, and quiet roads through the Western Ghats. Bhandardara is less about reaching one summit and more about letting the whole region set the pace.",
+  },
+  {
+    number: "02",
+    name: "Triund",
+    region: "Dhauladhar, Himachal Pradesh",
+    pace: "Moderate",
+    image: "/images/trip_012.jpg",
+    alt: "The Dhauladhar mountains near the Triund trail",
+    note: "A steady climb above Dharamshala that opens into a wide view of the Dhauladhar range. The trail stays with me for the shift in scale, from forest paths to mountains filling the horizon.",
+  },
 ];
 
-const Explore = () => {
-  return (
-    <PageLayout>
-      <section className="mx-auto max-w-3xl px-6 py-24 md:py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <p className="text-sm text-muted-foreground mb-4">Explore</p>
-          <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-            Off the screen<span className="text-primary">.</span>
-          </h1>
-          <p className="mt-4 text-base text-muted-foreground max-w-lg">
-            A running log of favourite food spots, city walks, and treks across Maharashtra and beyond.
-          </p>
-        </motion.div>
+const cityNotes = [
+  { name: "Mohammad Ali Road", type: "Food", area: "South Mumbai", note: "Dense, energetic streets where food and community shape the evening rhythm." },
+  { name: "Colaba", type: "Wander", area: "South Mumbai", note: "Old facades, cafés, sea air, visitors, and residents sharing the same few streets." },
+  { name: "Prithvi Café", type: "Culture", area: "Juhu", note: "A small corner where theatre, conversation, coffee, and the city’s creative life overlap." },
+  { name: "Carter Road", type: "Walk", area: "Bandra", note: "A long coastal pause for sunsets, conversations, movement, and watching the city exhale." },
+  { name: "Sassoon Docks", type: "Observe", area: "Colaba", note: "A working waterfront where the city feels raw, immediate, and completely awake." },
+  { name: "Mumbai in the rain", type: "Season", area: "Across the city", note: "Reflections, stalled traffic, wet platforms, sudden green, and a different quality of light." },
+];
 
-        {/* Food & City */}
-        <div className="mt-16">
-          <h2 className="font-display text-2xl font-semibold text-foreground mb-8">Food & City</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {spots.map((spot, i) => (
-              <motion.div
-                key={spot.name}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className="rounded-lg border border-border bg-card/50 p-5"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="font-medium text-foreground">{spot.name}</h3>
-                  <span className="shrink-0 rounded-full bg-accent px-2.5 py-0.5 text-[11px] text-muted-foreground">
-                    {spot.type}
-                  </span>
-                </div>
-                <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                  <MapPin className="h-3 w-3" />
-                  {spot.area}
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{spot.note}</p>
-              </motion.div>
-            ))}
+const Explore = () => (
+  <PageLayout
+    title="Explore"
+    description="Field notes from Soham Panchal's treks to Bhandardara and Triund, plus food, walks, and observations from Mumbai."
+  >
+    <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <PageIntro
+        kicker="Explore · Field notes"
+        title={<>The world makes more sense on foot<span className="text-primary">.</span></>}
+        lead="A personal field guide to mountain trails, city walks, food, and the places that interrupt routine. It is less a list of recommendations and more a record of attention."
+        aside={<span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs text-muted-foreground"><Route className="h-3.5 w-3.5 text-primary" />Mumbai and beyond</span>}
+      />
+
+      <section className="mt-20">
+        <div className="grid gap-8 md:grid-cols-[0.65fr_1.35fr]">
+          <div>
+            <p className="page-kicker">Two trails</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-foreground">Bhandardara and Triund.</h2>
           </div>
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            One belongs to the rain-soaked Western Ghats, the other to the Dhauladhar range. Both are reminders that effort, weather, and distance change how a place is seen.
+          </p>
         </div>
 
-        {/* Treks */}
-        <div className="mt-20">
-          <div className="editorial-divider mb-8" />
-          <h2 className="font-display text-2xl font-semibold text-foreground mb-8">Treks</h2>
-          <div className="flex flex-col">
-            {treks.map((trek, i) => (
-              <motion.div
-                key={trek.name}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="border-b border-border py-6 first:border-t"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-medium text-foreground">{trek.name}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{trek.note}</p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <p className="text-sm font-medium text-foreground">{trek.region}</p>
-                    <p className="text-xs text-muted-foreground">{trek.difficulty}</p>
-                  </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          {treks.map((trek) => (
+            <article key={trek.name} className="overflow-hidden rounded-lg border border-border bg-card/35">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img src={trek.image} alt={trek.alt} className="h-full w-full object-cover transition duration-700 hover:scale-[1.025]" />
+              </div>
+              <div className="p-7 sm:p-8">
+                <div className="flex items-center justify-between gap-4 text-xs text-muted-foreground">
+                  <span className="font-mono text-primary">{trek.number}</span>
+                  <span>{trek.pace}</span>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <h3 className="mt-5 font-display text-3xl font-semibold text-foreground">{trek.name}</h3>
+                <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted-foreground"><Mountain className="h-3.5 w-3.5 text-primary" />{trek.region}</p>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{trek.note}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
-    </PageLayout>
-  );
-};
+
+      <section className="mt-24 border-t border-border pt-16">
+        <div className="grid gap-8 md:grid-cols-[0.65fr_1.35fr]">
+          <div>
+            <p className="page-kicker">Closer to home</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-foreground">A Mumbai notebook.</h2>
+          </div>
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
+            Places I return to, pass through, or want to understand better. The point is not a definitive city guide. It is to notice how the city changes by neighbourhood, hour, season, and appetite.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {cityNotes.map((spot) => (
+            <article key={spot.name} className="flex min-h-56 flex-col bg-background p-6 transition-colors hover:bg-accent/40">
+              <div className="flex items-start justify-between gap-4">
+                <span className="text-xs uppercase tracking-[0.16em] text-primary">{spot.type}</span>
+                <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground"><MapPin className="h-3 w-3" />{spot.area}</span>
+              </div>
+              <h3 className="mt-8 font-display text-2xl font-semibold text-foreground">{spot.name}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{spot.note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <PageCta
+        eyebrow="The visual record"
+        title="Some places are better remembered in images."
+        description="Open the photography archive for mountain light, Mumbai rain, people, and moments from the trail."
+        to="/photography"
+        label="Browse the photographs"
+      />
+    </section>
+  </PageLayout>
+);
 
 export default Explore;

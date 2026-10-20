@@ -1,90 +1,92 @@
-import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Camera, Coffee, Mail, MessagesSquare } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import PageIntro from "@/components/shared/PageIntro";
 import { socialLinks } from "@/data/socials";
 
+const conversationStarters = [
+  { icon: MessagesSquare, title: "Build together", text: "AI systems, data infrastructure, developer tools, and engineering problems with real operational depth." },
+  { icon: Coffee, title: "Compare notes", text: "Writing, learning, markets, Formula 1, cars, chess, or a question that refuses to stay in one discipline." },
+  { icon: Camera, title: "Go outside", text: "Photo walks, Mumbai places, food recommendations, and ideas for the next trek." },
+];
+
 const Contact = () => (
-  <PageLayout>
-    <section className="mx-auto max-w-4xl px-6 py-24 md:py-32">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="max-w-2xl"
-      >
-        <p className="mb-4 text-sm text-muted-foreground">Contact · Collaborate · Follow</p>
-        <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-          Let’s exchange ideas<span className="text-primary">.</span>
-        </h1>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          I’m open to thoughtful collaborations, engineering opportunities, writing conversations,
-          photo walks, trek recommendations, and good questions that cross disciplines.
-        </p>
-      </motion.div>
+  <PageLayout
+    title="Contact"
+    description="Get in touch with Soham Panchal for engineering opportunities, collaborations, writing, photography, and thoughtful conversations."
+  >
+    <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      <PageIntro
+        kicker="Contact · Collaborate · Follow"
+        title={<>Good work often starts with a good question<span className="text-primary">.</span></>}
+        lead="I am open to thoughtful engineering opportunities, collaborations, writing conversations, photo walks, trek recommendations, and ideas that connect subjects in unexpected ways."
+      />
 
-      <motion.a
+      <a
         href="mailto:sohampanchal1469@gmail.com"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.6 }}
-        className="group mt-12 flex items-center justify-between gap-5 rounded-lg border border-border bg-foreground p-6 text-background sm:p-8"
+        className="group mt-14 grid gap-6 rounded-lg bg-foreground p-7 text-background transition-opacity hover:opacity-95 sm:p-10 md:grid-cols-[1fr_auto] md:items-end"
       >
-        <div className="flex items-center gap-4">
-          <Mail className="h-5 w-5" />
+        <div>
+          <Mail className="h-5 w-5 text-primary" />
+          <p className="mt-8 text-xs uppercase tracking-[0.16em] text-background/55">The most direct route</p>
+          <p className="mt-2 break-all font-display text-2xl font-semibold sm:text-3xl">sohampanchal1469@gmail.com</p>
+        </div>
+        <span className="inline-flex items-center gap-2 text-sm">
+          Write an email
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </a>
+
+      <section className="mt-24">
+        <div className="grid gap-8 md:grid-cols-[0.65fr_1.35fr]">
           <div>
-            <p className="text-xs opacity-60">The most direct route</p>
-            <p className="mt-1 text-base font-medium sm:text-lg">sohampanchal1469@gmail.com</p>
+            <p className="page-kicker">Conversation starters</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-foreground">What we could talk about.</h2>
+          </div>
+          <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-3">
+            {conversationStarters.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="bg-background p-6">
+                  <Icon className="h-5 w-5 text-primary" />
+                  <h3 className="mt-8 text-base font-medium text-foreground">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
-        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-      </motion.a>
+      </section>
 
-      <div className="mt-20">
-        <div className="mb-7 flex items-end justify-between gap-4">
+      <section className="mt-24 border-t border-border pt-14">
+        <div className="mb-8 grid gap-4 md:grid-cols-[0.65fr_1.35fr] md:items-end">
           <div>
-            <p className="text-sm text-muted-foreground">Find me elsewhere</p>
-            <h2 className="mt-2 font-display text-2xl font-semibold text-foreground">Every corner of the work</h2>
+            <p className="page-kicker">Elsewhere</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-foreground">Find the right corner.</h2>
           </div>
-          <span className="hidden text-xs text-muted-foreground sm:inline">Code · Essays · Practice · Conversation</span>
+          <p className="text-sm leading-relaxed text-muted-foreground">Different platforms hold different parts of the practice: code, essays, algorithms, chess, and shorter updates.</p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          {socialLinks.map((link, index) => (
-            <motion.div
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {socialLinks.filter((link) => link.url).map((link) => (
+            <a
               key={link.label}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.04 }}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex min-h-44 flex-col bg-background p-6 transition-colors hover:bg-accent/50"
             >
-              {link.url ? (
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex min-h-32 items-start justify-between gap-4 rounded-lg border border-border bg-card/40 p-5 transition-colors hover:bg-accent/60"
-                >
-                  <div>
-                    <p className="font-medium text-foreground group-hover:text-primary">{link.label}</p>
-                    <p className="mt-1 text-xs text-primary">{link.handle}</p>
-                    <p className="mt-4 text-sm text-muted-foreground">{link.note}</p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
-                </a>
-              ) : (
-                <div className="flex min-h-32 items-start justify-between gap-4 rounded-lg border border-dashed border-border bg-card/20 p-5">
-                  <div>
-                    <p className="font-medium text-foreground">{link.label}</p>
-                    <p className="mt-1 text-xs text-primary">{link.handle}</p>
-                    <p className="mt-4 text-sm text-muted-foreground">{link.note}</p>
-                  </div>
-                  <span className="text-[10px] text-muted-foreground">URL needed</span>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="font-medium text-foreground group-hover:text-primary">{link.label}</p>
+                  <p className="mt-1 text-xs text-primary">{link.handle}</p>
                 </div>
-              )}
-            </motion.div>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+              </div>
+              <p className="mt-auto pt-6 text-sm leading-relaxed text-muted-foreground">{link.note}</p>
+            </a>
           ))}
         </div>
-      </div>
+      </section>
     </section>
   </PageLayout>
 );

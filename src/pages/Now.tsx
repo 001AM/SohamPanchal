@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Camera, Code2, Compass, Swords } from "lucide-react";
+import { ArrowRight, BookOpen, Camera, CarFront, Code2, Compass, Swords } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 
 const currentThreads = [
@@ -42,6 +42,18 @@ const currentThreads = [
   },
   {
     number: "04",
+    title: "Following",
+    icon: CarFront,
+    description: "Staying close to the machines, histories, and competitions that make engineering feel emotional.",
+    details: [
+      "Formula 1, with a special love for Ferrari and its racing legacy",
+      "Cars as objects of design, performance, memory, and personality",
+    ],
+    href: "/about",
+    linkLabel: "Read the wider story",
+  },
+  {
+    number: "05",
     title: "Exploring",
     icon: Compass,
     description: "Spending more time away from the screen and paying attention to place, light, food, and movement.",
@@ -52,17 +64,33 @@ const currentThreads = [
     href: "/explore",
     linkLabel: "Open the field notes",
   },
+  {
+    number: "06",
+    title: "Leaving open",
+    icon: Camera,
+    description: "Not every curiosity has become a real interest yet. Some need the right story before they take hold.",
+    details: [
+      "I followed cricket closely until 2018 or 2019, then gradually drifted away",
+      "I would like to watch football, but have not found the story that makes it personal yet",
+    ],
+    href: "/contact",
+    linkLabel: "Give me a reason",
+  },
 ];
 
 const openLoops = [
   "Connect my public work without turning the site into a scoreboard.",
   "Write more clearly about what production engineering actually teaches.",
   "Build a stronger visual archive from treks and city walks.",
+  "Find the football story that turns casual curiosity into real attention.",
   "Keep following questions that do not fit inside a single discipline.",
 ];
 
 const Now = () => (
-  <PageLayout>
+  <PageLayout
+    title="Now"
+    description="What Soham Panchal is currently building, writing, practising, following, and exploring in October 2026."
+  >
     <section className="mx-auto max-w-5xl px-6 py-24 md:py-32">
       <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
         <div>

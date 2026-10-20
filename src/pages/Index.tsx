@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Camera, Code2, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Camera, CarFront, CircleDot, Code2, Compass, Swords } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 import ActivityDashboard from "@/components/shared/ActivityDashboard";
 import { posts } from "@/data/posts";
@@ -46,8 +46,16 @@ const featuredImages = [
   { src: "/images/mumbai_257.jpg", alt: "Rainy Mumbai station", className: "col-span-1" },
 ];
 
+const sideRoads = [
+  { icon: Swords, title: "Chess", text: "Calculation, patience, and imperfect decisions.", href: "https://www.chess.com/member/soham0410", external: true },
+  { icon: CarFront, title: "Cars and Formula 1", text: "Ferrari, racing legacy, engineering, and a lifelong love of cars.", href: "/about" },
+  { icon: CircleDot, title: "Sport and story", text: "Cricket shaped an early memory. Football is still waiting for its reason.", href: "/about" },
+];
+
 const Index = () => (
-  <PageLayout>
+  <PageLayout
+    description="Soham Panchal is a Mumbai-based engineer, writer, photographer, explorer, chess player, and Formula 1 enthusiast."
+  >
     <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-28 md:grid-cols-[1.08fr_0.92fr] md:items-center md:pb-32 md:pt-40">
       <div>
         <p className="mb-7 text-xs font-medium uppercase tracking-[0.22em] text-primary">
@@ -58,7 +66,7 @@ const Index = () => (
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
           I’m Soham, an engineer, writer, photographer, and explorer following ideas across software,
-          markets, mountains, city streets, and culture.
+          markets, mountains, city streets, chess, cars, and culture.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
@@ -130,6 +138,31 @@ const Index = () => (
               </motion.div>
             );
           })}
+        </div>
+
+        <div className="mt-14 grid gap-7 border-t border-border pt-10 md:grid-cols-[0.55fr_1.45fr]">
+          <div>
+            <p className="text-sm text-muted-foreground">Side roads</p>
+            <h3 className="mt-2 font-display text-2xl font-semibold text-foreground">The interests around the work.</h3>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {sideRoads.map((item) => {
+              const Icon = item.icon;
+              const content = (
+                <>
+                  <Icon className="h-4 w-4 text-primary" />
+                  <p className="mt-5 text-sm font-medium text-foreground">{item.title}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+                </>
+              );
+
+              return item.external ? (
+                <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-border bg-background p-5 transition-colors hover:bg-accent/50">{content}</a>
+              ) : (
+                <Link key={item.title} to={item.href} className="rounded-lg border border-border bg-background p-5 transition-colors hover:bg-accent/50">{content}</Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
